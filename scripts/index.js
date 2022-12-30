@@ -28,14 +28,12 @@ editCloseButton.addEventListener('click', closeEditPopup);
 
 function handleFormSubmit (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  profileActivity.textContent =  jobInput.value;// Получите значение полей jobInput и nameInput из свойства value
+  profileActivity.textContent =  jobInput.value;
   profileTitle.textContent =  nameInput.value;
   closeEditPopup ();
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit); 
+formElement.addEventListener('submit', handleFormSubmit);
 
 /*editButton.addEventListener('click', (event) => {
   editPopup.classList.add('popup__opened')
