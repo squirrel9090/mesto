@@ -18,7 +18,7 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 720px) {
   .popup__field {
     width: 234px;   
     padding-bottom: 8px; 

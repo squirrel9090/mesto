@@ -1,6 +1,11 @@
 const editButton = document.querySelector('.profile__edit-button');
 const editPopup = document.querySelector('.popup_edit');
 const editCloseButton  = editPopup.querySelector('.popup__close-button');
+const formElement = document.querySelector('.popup__form');
+const nameInput = formElement.querySelector('.popup_name');
+const jobInput = formElement.querySelector('.popup_job');
+const profileTitle = document.querySelector('.profile__title');
+const profileActivity = document.querySelector('.profile__activity');
 
 function openPopup (popup) {
   popup.classList.add('popup__opened');
@@ -20,6 +25,17 @@ function closeEditPopup () {
 
 editButton.addEventListener('click', openEditPopup);
 editCloseButton.addEventListener('click', closeEditPopup);
+
+function handleFormSubmit (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  profileActivity.textContent =  jobInput.value;// Получите значение полей jobInput и nameInput из свойства value
+  profileTitle.textContent =  nameInput.value;
+  closeEditPopup ();
+}
+
+// Прикрепляем обработчик к форме:
+// он будет следить за событием “submit” - «отправка»
+formElement.addEventListener('submit', handleFormSubmit); 
 
 /*editButton.addEventListener('click', (event) => {
   editPopup.classList.add('popup__opened')
