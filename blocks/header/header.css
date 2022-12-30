@@ -2,7 +2,13 @@
     display: flex;
     justify-content: flex-start;
     max-width: 880px;
-    margin: 45px auto 0px;
-    padding-bottom: 40px;
+    padding: 45px 0 40px;
     border-bottom: 1px solid #545454;
+    margin:0 auto;
+}
+
+@media (max-width: 1223px) {
+  .header {
+    padding: 29px 8px 30px;
+  }
 }
