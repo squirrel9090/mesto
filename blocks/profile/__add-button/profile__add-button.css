@@ -5,12 +5,13 @@
   width: 150px;
   height: 50px;
   border:2px solid #fff;
+  border-radius: 2px;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
   align-self: center;
-  margin-left: 244px;
   transition: opacity 0.2s ease 1s;
+  grid-area: profile__add-button;
 }
 
 .profile__add-button:hover {
@@ -20,6 +21,7 @@
 @media (max-width: 1223px) {
   .profile__add-button {
     margin:0 auto;
+    margin-top: 32px;
     background-size: 16px;
     width: 282px;
   }

@@ -1,6 +1,10 @@
 .profile__info {
   display: flex;
   flex-wrap: wrap;
+  grid-area: profile__info;
+  
+
+ 
   max-width: 336px;
   color: #fff;
   font-weight: 400;
@@ -20,6 +24,5 @@
   .profile__info {
     margin-top: 6px;
     margin-left: 26px;
-    margin-bottom: 32px;
   }
 }
