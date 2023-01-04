@@ -21,7 +21,6 @@
 
 @media (max-width: 720px) {
   .popup__field {
-    width: 234px;
     padding-bottom: 8px;
     margin-bottom: 29px;
   }

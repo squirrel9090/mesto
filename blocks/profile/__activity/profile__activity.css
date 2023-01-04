@@ -11,6 +11,7 @@
   grid-area: profile__activity;
   overflow: hidden;
   align-self: center;
+  max-width: 100%;
 }
 
 @media (max-width: 1024px) {
