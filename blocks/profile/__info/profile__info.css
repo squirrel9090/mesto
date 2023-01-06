@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   grid-area: profile__info;
-  max-width: 330px;
+  max-width: 336px;
   color: #fff;
   font-weight: 400;
   font-size: 18px;

@@ -9,8 +9,8 @@
   width: 358px;
   height: 50px;
   border-radius: 2px;
-  box-sizing: border-box;
-  margin-top: 48px;
+  margin: 43px 0 0 0;
+  padding: 0;
   cursor: pointer;
   transition: opacity 0.5s ease 1s;
 }
@@ -25,6 +25,6 @@
     height: 46px;
     background-size: 20px;
     font-size: 14px;
-    margin-top: 46px;
+    margin-top: 19px;
   }
 }

@@ -33,7 +33,6 @@ function handleFormSubmit (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileActivity.textContent =  jobInput.value;
   profileTitle.textContent =  nameInput.value;
-  profileInformation.innerHTML = `<input type="text" class="popup__field popup__field_el_name" placeholder="${nameInput.value}" value="${nameInput.value}"><input type="text" class="popup__field popup__field_el_job" placeholder="${jobInput.value}" value="${jobInput.value}"><button class="popup__submit-button" type="submit">Сохранить</button>`;
   closeEditPopup ();
 }
 

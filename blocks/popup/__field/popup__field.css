@@ -4,7 +4,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  margin-bottom: 43px;
+  margin: 25px 0 0 0;
+  padding: 0 0 13px 0;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
@@ -15,13 +16,10 @@
   border: 1px solid;
 }
 
-.popup__field:nth-last-child(2) {
-  margin-bottom: 0;
-}
 
 @media (max-width: 720px) {
   .popup__field {
     padding-bottom: 8px;
-    margin-bottom: 29px;
+    margin: 7px 0 24px 0;
   }
 }
