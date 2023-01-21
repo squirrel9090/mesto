@@ -7,7 +7,7 @@
   cursor: pointer;
   padding: 0;
   align-self: center;
-  transition: opacity 0.5s ease 1s;
+  transition: opacity 0.5s ease 0.1s;
 }
 
 .element__like-button:hover {

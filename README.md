@@ -1,4 +1,4 @@
-# Проект: Место [Ссылка на проект](https://squirrel9090.github.io/mesto/)
+# Проект: [Место](https://squirrel9090.github.io/mesto/)
 
 # Краткое описание
 Одностраничный, адаптивный сайт, созданный с использованием HTML, CSS и JavaScript.
