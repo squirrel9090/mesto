@@ -24,30 +24,30 @@ const openImagePopup = imagePopup.querySelector('.popup__figure');
 
 const initialCards = [
   {
-    name: 'Кисловодск',
-    link: '../images/kislovodsk.jpg'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Эльбрус',
-    link: '../images/elbrus.jpg'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
     name: 'Байкал',
-    link: '../images/baikal.jpg'
-  },
-  {
-    name: 'Кабардино-Балкария',
-    link: '../images/dzhily-su.jpg'
-  },
-  {
-    name: 'Дагестан',
-    link: '../images/dagestan.jpg'
-  },
-  {
-    name: 'Северная Осетия',
-    link: '../images/north_ossetia.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-]; 
+];
 
 function addCardEventListeners (elementCard) {
 	const deleteButton = elementCard.querySelector('.element__delete-button');
