@@ -55,10 +55,6 @@ function addCardEventListeners (elementCard) {
   
   const elementLike = elementCard.querySelector('.element__like-button');
   elementLike.addEventListener('click', likeElement);
-
-  /*const elementImage = elementCard.querySelector('.element__image');
-  elementImage.addEventListener('click',() => {
-    openImgPopup});*/
 }
 
 /* добавление карточки */
