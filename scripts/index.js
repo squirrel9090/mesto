@@ -16,7 +16,10 @@ const addCloseButton  = addPopup.querySelector('.popup__close-button');
 const addFormElement = addPopup.querySelector('.popup__form');
 
 const imageNameInput = addPopup.querySelector('.popup__field_el_name');
-const imageLinkInput = addPopup.querySelector('.popup__field_el_link'); 
+const imageLinkInput = addPopup.querySelector('.popup__field_el_link');
+
+const imagePopup = document.querySelector('.popup_open-image');
+const openImagePopup = imagePopup.querySelector('.popup__figure');
 
 
 const initialCards = [
@@ -52,6 +55,10 @@ function addCardEventListeners (elementCard) {
   
   const elementLike = elementCard.querySelector('.element__like-button');
   elementLike.addEventListener('click', likeElement);
+
+  /*const elementImage = elementCard.querySelector('.element__image');
+  elementImage.addEventListener('click',() => {
+    openImgPopup});*/
 }
 
 /* добавление карточки */
@@ -62,6 +69,16 @@ function createElement({name, link}){
   elementImage.src = link;
   elementImage.alt = name;
   elementName.textContent = name;
+
+  const popupImage = imagePopup.querySelector('.popup__image');
+  const popupCaption = imagePopup.querySelector('.popup__caption');
+  elementImage.addEventListener('click',() => {
+    popupImage.src = link;
+    popupImage.alt = name;
+    popupImage.textContent = name;
+    popupCaption.textContent = name;
+    openImgPopup(imagePopup);
+    });
   addCardEventListeners (elementCard);
   return elementCard;
 }
@@ -115,6 +132,8 @@ function openAddPopup (event) {
 }
 
 function closeAddPopup () {
+  imageNameInput.value = '';
+  imageLinkInput.value = '';
   closePopup(addPopup);
 }
 
@@ -134,3 +153,14 @@ addFormElement.addEventListener('submit', handleAddFormSubmit);
 function likeElement (event) {
   event.target.classList.toggle('element__like-button_active');
 }
+
+/*3й popup */
+function openImgPopup (event) {
+  openPopup(imagePopup);
+}
+
+function closeImagePopup (event) {
+  closePopup(imagePopup);
+}
+const imgCloseButton = imagePopup.querySelector('.popup__close-button');
+imgCloseButton.addEventListener('click', closeImagePopup);
