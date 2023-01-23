@@ -27,28 +27,28 @@
     <footer class="footer">&copy; 2022 Mesto Russia</footer>
   </div>
   <div class="popup popup_edit">
-    <div class="popup__form">
+    <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__header">Редактировать профиль</h2>
-      <form name="profile-information" class="popup__information">
-        <input type="text" class="popup__field popup__field_el_name" placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто">
-        <input type="text" class="popup__field popup__field_el_job" placeholder="Исследователь океана" value="Исследователь океана">
+      <form name="profile-information" class="popup__form">
+        <input type="text" class="popup__field popup__field_el_name" placeholder="Имя">
+        <input type="text" class="popup__field popup__field_el_job" placeholder="О себе">
         <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
   <div class="popup popup_new-card">
-    <div class="popup__form">
+    <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__header">Новое место</h2>
-      <form name="profile-information" class="popup__information">
+      <form name="profile-information" class="popup__form">
         <input type="text" class="popup__field popup__field_el_name" placeholder="Название">
         <input type="url" class="popup__field popup__field_el_link" placeholder="Ссылка на картинку">
         <button class="popup__submit-button" type="submit">Создать</button>
       </form>
     </div>
   </div>
-  <div class="popup popup_open-image">
+  <div class="popup popup_open-image popup_background_dark">
     <figure class="popup__figure">
       <button class="popup__close-button" type="button"></button>
       <img src="#" alt="" class="popup__image">
@@ -65,6 +65,7 @@
       </div>
     </div>
   </template>
+  <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
