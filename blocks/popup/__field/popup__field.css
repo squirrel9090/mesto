@@ -4,8 +4,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  margin: 25px 0 0 0;
-  padding: 0 0 13px 0;
+  margin: 0 0 0 0;
+  padding: 0 0 9px 0;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
@@ -17,9 +17,9 @@
 }
 
 
-@media (max-width: 720px) {
+/*@media (max-width: 720px) {
   .popup__field {
     padding-bottom: 8px;
     margin: 7px 0 24px 0;
   }
-}
+}*/

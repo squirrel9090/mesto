@@ -1,12 +1,11 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
 const profileCloseButton  = popupEdit.querySelector('.popup__close-button');
-const profileEditingCard = popupEdit.querySelector('.popup__container');
+const profileEditingCard = popupEdit.querySelector('.popup__form');
 const nameInput = profileEditingCard.querySelector('.popup__field_el_name');
 const jobInput = profileEditingCard.querySelector('.popup__field_el_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileActivity = document.querySelector('.profile__activity');
-const profileInformation = profileEditingCard.querySelector('.popup__form');
 const elementContainer =document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.element');
 
@@ -43,7 +42,6 @@ function createElement({name, link}){
   elementImage.addEventListener('click',() => {
     popupImage.src = link;
     popupImage.alt = name;
-    popupImage.textContent = name;
     popupCaption.textContent = name;
     openImgPopup(imagePopup);
     });
@@ -66,10 +64,14 @@ renderElement();
 
 function openPopup (popup) {
   popup.classList.add('popup__opened');
+  document.addEventListener('keyup', closePopupEsc);
+  popup.addEventListener('click', closePopupOverlay);
 }
 
 function closePopup (popup) {
   popup.classList.remove('popup__opened');
+  popup.removeEventListener('click', closePopupOverlay);
+  document.removeEventListener('keyup', closePopupEsc);
 }
 
 /* 1й popup */
@@ -132,3 +134,19 @@ function closeImagePopup (event) {
 }
 const imgCloseButton = imagePopup.querySelector('.popup__close-button');
 imgCloseButton.addEventListener('click', closeImagePopup);
+
+/*закрытие popup клавишей esc*/
+function closePopupEsc (evt) {
+  if(evt.key === 'Escape'){
+    const activePopup = document.querySelector('.popup__opened');
+    closePopup(activePopup);
+  }
+}
+/*document.addEventListener('keydown', popupCloseEsc);*/
+
+/*Закрытие через overlay*/
+function closePopupOverlay (evt) {
+  if (evt.target === evt.currentTarget) {
+      closePopup(evt.currentTarget);
+  }
+}
