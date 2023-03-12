@@ -47,7 +47,6 @@ const jobInput = profileEditingCard.querySelector('.popup__field_el_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileActivity = document.querySelector('.profile__activity');
 const elementContainer =document.querySelector('.elements');
-/*const elementTemplate = document.querySelector('.element-template').content.querySelector('.element');*/
 
 const cardAddButton = document.querySelector('.profile__add-button');
 const popupAddNewCard = document.querySelector('.popup_new-card');
@@ -59,7 +58,6 @@ const imageNameInput = popupAddNewCard.querySelector('.popup__field_el_name');
 const imageLinkInput = popupAddNewCard.querySelector('.popup__field_el_link');
 
 const imagePopup = document.querySelector('.popup_open-image');
-/*const ImagePopupOpen = imagePopup.querySelector('.popup__figure');*/
 
 const popupImage = imagePopup.querySelector('.popup__image');
 const popupCaption = imagePopup.querySelector('.popup__caption');
@@ -74,40 +72,6 @@ function addCardEventListeners (elementCard) {
   const elementLike = elementCard.querySelector('.element__like-button');
   elementLike.addEventListener('click', likeElement);
 }
-
-/* добавление карточки */
-/*function createElement({name, link}){
-  const elementCard = elementTemplate.cloneNode(true);
-  const elementImage = elementCard.querySelector('.element__image');
-  const elementName = elementCard.querySelector('.element__name');
-  elementImage.src = link;
-  elementImage.alt = name;
-  elementName.textContent = name;
-
-  const popupImage = imagePopup.querySelector('.popup__image');
-  const popupCaption = imagePopup.querySelector('.popup__caption');
-  elementImage.addEventListener('click',() => {
-    popupImage.src = link;
-    popupImage.alt = name;
-    popupCaption.textContent = name;
-    openImgPopup(imagePopup);
-    });
-  addCardEventListeners (elementCard);
-  return elementCard;
-}
-
-function deleteElement (event) {
-  event.target.closest('.element').remove();
-}
-
-/*function renderElement(){
-  initialCards.forEach(item => {
-    const elementHTML = createElement(item);
-    elementContainer.append(elementHTML);
-  });
-}
-
-renderElement();*/
 
 export function openPopup (popup) {
   popup.classList.add('popup__opened');
@@ -176,9 +140,7 @@ function likeElement (event) {
 }
 
 /*3й popup */
-/*export function openImgPopup (event) {
-  openPopup(imagePopup);
-}*/
+
 export const openImgPopup = (element) => {
   openPopup(imagePopup);
   popupCaption.textContent = element._name;
@@ -219,11 +181,6 @@ const addCard = (name, link) => {
   elementsCards.prepend(card);
 }
 
-/*const renderElement = (initialCards) => {
-  initialCards.forEach((item) => {
-    addCard(item.name, item.link);
-  })
-}*/
 initialCards.forEach((item) => {
   //создаем элемент карточки
   const card = new Card(item.name, item.link);
