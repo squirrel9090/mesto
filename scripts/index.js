@@ -1,42 +1,6 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const config = {
-  selectorElementsCards:'.elements',
-  selectorTemplateCard: '.element-template',
-  formSelector: '.popup__form',
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_inactive',
-  inputErrorClass: 'popup__field_type_error',
-  errorClass: 'popup__form-error_active'
-}
+import {initialCards, config} from './constants.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
@@ -58,12 +22,28 @@ const imageNameInput = popupAddNewCard.querySelector('.popup__field_el_name');
 const imageLinkInput = popupAddNewCard.querySelector('.popup__field_el_link');
 
 const imagePopup = document.querySelector('.popup_open-image');
-
+const imgCloseButton = imagePopup.querySelector('.popup__close-button');
 const popupImage = imagePopup.querySelector('.popup__image');
 const popupCaption = imagePopup.querySelector('.popup__caption');
 
 const profileFormValidator = new FormValidator(config, profileEditingCard);
 const cardFormValidator = new FormValidator(config, profileAddNewCard);
+
+const elementsCards = document.querySelector(config.selectorElementsCards);
+
+const vbKeyEscape = 'Escape';
+
+export const openImgPopup = (element) => {
+  openPopup(imagePopup);
+  popupCaption.textContent = element._name;
+  popupImage.src = element._link;
+  popupImage.alt = element._name;
+}
+
+const addCard = (name, link) => {
+  const card = createCard(name, link);
+  elementsCards.prepend(card);
+}
 
 function addCardEventListeners (elementCard) {
 	const deleteButton = elementCard.querySelector('.element__delete-button');
@@ -98,9 +78,6 @@ function closeProfilePopup () {
   closePopup(popupEdit);
 }
 
-profileEditButton.addEventListener('click', openProfilePopup);
-profileCloseButton.addEventListener('click', closeProfilePopup);
-
 function handleFormSubmit (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileActivity.textContent =  jobInput.value;
@@ -108,7 +85,6 @@ function handleFormSubmit (evt) {
   closeProfilePopup ();
 }
 
-profileEditingCard.addEventListener('submit', handleFormSubmit);
 /* 2й popup*/
   function openNewCardPopup (event) {
   imageNameInput.value = '';
@@ -122,9 +98,6 @@ function closeNewCardPopup () {
   closePopup(popupAddNewCard);
 }
 
-cardAddButton.addEventListener('click', openNewCardPopup);
-newCardCloseButton.addEventListener('click', closeNewCardPopup);
-
 /*Добавление новой карточки*/
   function handleAddFormSubmit (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы(не происходит перезагрузка).
@@ -133,7 +106,6 @@ newCardCloseButton.addEventListener('click', closeNewCardPopup);
   closeNewCardPopup ();
 }
 
-placeAddCard.addEventListener('submit', handleAddFormSubmit);
 /*Лайк*/
 function likeElement (event) {
   event.target.classList.toggle('element__like-button_active');
@@ -141,21 +113,13 @@ function likeElement (event) {
 
 /*3й popup */
 
-export const openImgPopup = (element) => {
-  openPopup(imagePopup);
-  popupCaption.textContent = element._name;
-  popupImage.src = element._link;
-  popupImage.alt = element._name;
-}
 function closeImagePopup (event) {
   closePopup(imagePopup);
 }
-const imgCloseButton = imagePopup.querySelector('.popup__close-button');
-imgCloseButton.addEventListener('click', closeImagePopup);
 
 /*закрытие popup клавишей esc*/
 function closePopupEsc (evt) {
-  if(evt.key === 'Escape'){
+  if(evt.key === vbKeyEscape){
     const activePopup = document.querySelector('.popup__opened');
     closePopup(activePopup);
   }
@@ -169,26 +133,32 @@ function closePopupOverlay (evt) {
 }
 /*_______________________________________________________*/
 
-const elementsCards = document.querySelector(config.selectorElementsCards)
-
 function createCard(name, link) {
   const card = new Card(name, link, '.template', openImgPopup);
   const elementCard = card.generateElement();
   return elementCard
 }
-const addCard = (name, link) => {
-  const card = createCard(name, link);
-  elementsCards.prepend(card);
-}
 
 initialCards.forEach((item) => {
   //создаем элемент карточки
-  const card = new Card(item.name, item.link);
+  const card = new Card(item.name, item.link, '.template');
   // создаём карточку и возвращаем наружу
   const elementCard = card.generateElement();
   // Добавляем в DOM
   elementsCards.append(elementCard);
 });
+
+profileEditButton.addEventListener('click', openProfilePopup);
+profileCloseButton.addEventListener('click', closeProfilePopup);
+
+profileEditingCard.addEventListener('submit', handleFormSubmit);
+
+cardAddButton.addEventListener('click', openNewCardPopup);
+newCardCloseButton.addEventListener('click', closeNewCardPopup);
+
+imgCloseButton.addEventListener('click', closeImagePopup);
+
+placeAddCard.addEventListener('submit', handleAddFormSubmit);
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
