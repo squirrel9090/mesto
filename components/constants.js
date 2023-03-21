@@ -48,3 +48,5 @@ export const initialCards = [
   export const vbKeyEscape = 'Escape';
   export const submitButtonSelector = document.querySelector('.popup__submit-button');
   export const cardAddButton = document.querySelector('.profile__add-button');
+  export const profileAddNewCard = popupAddNewCard.querySelector('.popup__form');
+  export const elementsCards = document.querySelector(config.selectorElementsCards);
