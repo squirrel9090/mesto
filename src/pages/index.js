@@ -1,10 +1,11 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import {initialCards, config, elementContainer, imageLinkInput, imageNameInput, profileEditingCard, nameInput, jobInput, profileEditButton, cardAddButton, popupAddNewCard, profileAddNewCard, elementsCards} from '../scripts/constants.js';
+import {initialCards, config, elementContainer, imageLinkInput, imageNameInput, profileEditingCard, nameInput, jobInput, profileEditButton, cardAddButton, popupAddNewCard, profileAddNewCard, elementsCards} from '../components/constants.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import './index.css';
 
 const addCard = (name, link) => {
   const card = createCard(name, link);
