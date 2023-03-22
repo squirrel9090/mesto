@@ -7,21 +7,25 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
 
-const addCard = (name, link) => {
-  const card = createCard(name, link);
-  elementsCards.prepend(card);
-}
+  // отрисовка начальных карточек
+const containerCard = new Section({
+    items: initialCards,
+    renderer: (item) => {
+      containerCard.addItem(createCard(item.name, item.link))
+    }
+  },elementsCards);
+  
+containerCard.renderItems();
 
 /*Добавление новой карточки*/
 const popupNewCard = new PopupWithForm('.popup_new-card',  handleAddFormSubmit);
 popupNewCard.setEventListeners();
 function handleAddFormSubmit (evt) {
-  /*evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы(не происходит перезагрузка).*/
-  const newCard = addCard(imageNameInput.value, imageLinkInput.value);//создали карточку и передали ей значения из инпутов
-  elementContainer.append(newCard);
+  const newCard = containerCard.addItem(createCard(imageNameInput.value, imageLinkInput.value));//создали карточку и передали ей значения из инпутов
   popupNewCard.close();
 }
-cardAddButton.addEventListener('click', () => {popupNewCard.open()});
+
+cardAddButton.addEventListener('click', () => {popupNewCard.open();cardFormValidator.resetValidation(profileAddNewCard, config);});
 const handleCardClick = (name, link) => {
   imagePopup.open({name, link});
   console.log({name, link});
@@ -32,15 +36,6 @@ function createCard(name, link) {
   const elementCard = card.generateElement();
   return elementCard
 }
-  // отрисовка начальных карточек
-const containerCard = new Section({
-    items: initialCards,
-    renderer: (item) => {
-      containerCard.addItem(createCard(item.name, item.link))
-    }
-  },elementsCards);
-  
-containerCard.renderItems();
 
 const profileInfo = new UserInfo({
   profileNameSelector: '.profile__title',
