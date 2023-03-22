@@ -1,11 +1,9 @@
-import {openImgPopup} from './index.js'
-
 export default class Card {
-  constructor(name, link, template) {
+  constructor(name, link, template,handleCardClick) {
     this._name = name;
     this._link = link;
     this._template = '.element-template';
-    this.openImgPopup = openImgPopup;
+    this._handleCardClick = handleCardClick;
   }
   _getElementFromTemplate(){
     return document.querySelector(this._template).content.querySelector('.element').cloneNode(true);
@@ -26,7 +24,7 @@ export default class Card {
   }
 
   _openCard() {
-    this.openImgPopup(this)
+    this._handleCardClick(this._name, this._link);
   }
 
   generateElement() {
