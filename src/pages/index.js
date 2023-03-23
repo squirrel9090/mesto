@@ -21,7 +21,7 @@ containerCard.renderItems();
 const popupNewCard = new PopupWithForm('.popup_new-card',  handleAddFormSubmit);
 popupNewCard.setEventListeners();
 function handleAddFormSubmit (evt) {
-  const newCard = containerCard.addItem(createCard(imageNameInput.value, imageLinkInput.value));//создали карточку и передали ей значения из инпутов
+  containerCard.addItem(createCard(imageNameInput.value, imageLinkInput.value));//создали карточку и передали ей значения из инпутов
   popupNewCard.close();
 }
 
