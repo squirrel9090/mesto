@@ -166,7 +166,7 @@ function handleRemoveSubmit(card) {
   }
 //форма для смены аватара
 const popupWithAvatarForm = new PopupWithForm(
-  ".popup__change-avatar",
+  ".popup_change-avatar",
   handleAvatarFormSubmit
 );
 popupWithAvatarForm.setEventListeners();

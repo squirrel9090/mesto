@@ -22,5 +22,5 @@
   export const profileAddNewCard = popupAddNewCard.querySelector('.popup__form');
   export const elementsCards = document.querySelector(config.selectorElementsCards);
   export const avatarButton = document.querySelector('.profile__avatar-button');
-  const popupChangeAvatar = document.querySelector('.popup__change-avatar');
+  const popupChangeAvatar = document.querySelector('.popup_change-avatar');
   export const profileAddNewAvatar = popupChangeAvatar.querySelector('.popup__form')
