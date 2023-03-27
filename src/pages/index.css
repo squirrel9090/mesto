@@ -27,6 +27,7 @@
 @import url("../blocks/element/__wrapper/element__wrapper.css");
 @import url("../blocks/element/__delete-button/element__delete-button.css");
 @import url("../blocks/element/__like-counter/element__like-counter.css");
+@import url("../blocks/element/__like-group/element__like-group.css");
 
 @import url("../blocks/footer/footer.css");
 

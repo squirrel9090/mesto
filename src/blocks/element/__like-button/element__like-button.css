@@ -13,9 +13,3 @@
 .element__like-button:hover {
   opacity: 0.5;
 }
-
-@media (max-width: 1024px) {
-  .element__like-button {
-    margin: 5px;
-  }
-}

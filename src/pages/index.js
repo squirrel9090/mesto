@@ -19,7 +19,6 @@ Promise.all([api.getCurrentUser(), api.getCard()])
     profileInfo.setUserInfo(userServerData);
     currentUserId = userServerData._id;
     containerCard.renderItems(cardsData);
-    console.log(userServerData, cardsData);
   })
   .catch((err) => {
    console.log(err);
@@ -51,20 +50,19 @@ function handleAddFormSubmit (data) {
       popupNewCard.close();
     })
     .catch((err) => {
+      console.log(err);
     })
     .finally(() => {
-      popupInfo.renderLoading(false);
+      popupNewCard.renderLoading(false);
     });
 }
 
 cardAddButton.addEventListener('click', () => {popupNewCard.open();cardFormValidator.resetValidation(profileAddNewCard, config);});
 const handleCardClick = (name, link) => {
   imagePopup.open({name, link});
-  console.log({name, link});
 }
   
 function createCard(data) {
-  console.log(data)
   const card = new Card(data, currentUserId, '.template',handleCardClick, handleLikeClick,  handleTrashBinClick);
   const elementCard = card.generateElement();
   return elementCard
@@ -72,9 +70,9 @@ function createCard(data) {
 
 //лайк карточки
 function handleLikeClick(card) {
-  if (card._checkLike()) {
+  if (card.checkLike()) {
     api
-      .deleteLikeFromCard(card._cardId)
+      .deleteLikeFromCard(card.getLikeId())
       .then((res) => {
         card.setLikes(res.likes);
       })
@@ -83,7 +81,7 @@ function handleLikeClick(card) {
       });
   } else {
     api
-      .putLikeToCard(card._cardId)
+      .putLikeToCard(card.getLikeId())
       .then((res) => {
         card.setLikes(res.likes);
       })
@@ -100,9 +98,6 @@ function handleInfoFormSubmit(data) {
   popupInfo.renderLoading(true);
   api
     .patchUserData({name: data.name, about: data.description})
-    .then((res) => {
-      console.log(res);
-      return res.json();})
       .then((data) => {// если мы попали в этот then, data — это объект
         profileInfo.setUserInfo(data);
         popupInfo.close();    
@@ -122,7 +117,6 @@ profileEditButton.addEventListener('click', () => {
   const { name, about }  = profileInfo.getUserInfo();
   nameInput.value = name;
   jobInput.value = about;
-  console.log(name)
 })
   //3й popup
 const imagePopup = new PopupWithImage('.popup_open-image');
@@ -152,9 +146,9 @@ function handleTrashBinClick(card) {
 function handleRemoveSubmit(card) {
   popupWithDeleteVerification.renderLoading(true);
   api
-    .deleteCard(card._cardId)
+    .deleteCard(card.getLikeId())
     .then(() => {
-      card._deleteCard();
+      card.deleteCard();
       popupWithDeleteVerification.close();
     })
     .catch((err) => {

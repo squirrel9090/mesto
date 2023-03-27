@@ -7,8 +7,6 @@ export default class Card {
     this._ownerId = data.owner._id === currentUserId;
     this._currentUserId = currentUserId;
     this._template = '.element-template';
-console.log(currentUserId);
-console.log(this._ownerId);
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleTrashBinClick = handleTrashBinClick;
@@ -16,10 +14,13 @@ console.log(this._ownerId);
   _getElementFromTemplate(){
     return document.querySelector(this._template).content.querySelector('.element').cloneNode(true);
   }
-
+  
+  getLikeId(){
+    return this._cardId
+  }
   _addEventListeners() {
     this._deleteButton.addEventListener('click', () => this._handleTrashBinClick(this));
-    this._like.addEventListener('click', () => this._handleLikeClick(this, this._checkLike()));
+    this._like.addEventListener('click', () => this._handleLikeClick(this, this.checkLike()));
     this._picture.addEventListener('click', () => this._openCard());
   }
 
@@ -49,12 +50,14 @@ console.log(this._ownerId);
     return this._element;
   }
 
-  _deleteCard() {
+  deleteCard() {
     this._element.remove();
     this._element = null;
     }
 
-    _checkLike() {
+
+
+    checkLike() {
       return this._likes.some(like => {
         return like._id === this._currentUserId;
       });
@@ -63,7 +66,7 @@ console.log(this._ownerId);
   setLikes(arr) {
     this._element.querySelector('.element__like-counter').textContent =arr.length;
     this._likes = arr;
-    if (this._checkLike()) {
+    if (this.checkLike()) {
       this._like.classList.add('element__like-button_active');
     } else {
       this._like.classList.remove('element__like-button_active');

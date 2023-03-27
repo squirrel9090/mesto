@@ -22,24 +22,14 @@ getCard(){
   method: 'GET',
   headers: this._getHeaders(),
 })
-.then(res =>{
-  if (res.ok){
-    return res.json();
+.then(this._getJson);
 }
-return Promise.reject(`Ошибка: ${res.status}`);
-  })
-}
-
 getCurrentUser(){
   return fetch(`${this._baseUrl}${'users/me'}`, {
   method: "GET",
   headers: this._getHeaders(),
-  }).then(res =>{
-    if (res.ok){
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
   })
+  .then(this._getJson);
 }
 postCardtoServer(data) {
   return fetch(`${this._baseUrl}/cards`, {
@@ -65,7 +55,12 @@ patchUserData({name, about}) {
       name: name,
       about: about,
     }),
-  }).then(this._handleError);
+  })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }})
+  .then(this._handleError);
 }
 
 putLikeToCard(cardId) {
@@ -100,13 +95,8 @@ changeAvatar(src) {
           avatar: src.link
         })
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-  }
+      .then(this._getJson);
+}
 
 //удалить карточку
 deleteCard(cardId) {
