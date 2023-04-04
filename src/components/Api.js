@@ -44,7 +44,7 @@ getUserData() {
   return fetch(`${this._baseUrl}/users/me`, {
     method: "GET",
     headers: this._getHeaders(),
-  }).then(this._handleError);
+  }).then(this._getJson);
 }
 
 patchUserData({name, about}) {
@@ -60,7 +60,7 @@ patchUserData({name, about}) {
       if (res.ok) {
         return res.json();
       }})
-  .then(this._handleError);
+  .then(this._getJson);
 }
 
 putLikeToCard(cardId) {
@@ -72,7 +72,7 @@ putLikeToCard(cardId) {
     if (res.ok) {
       return res.json();
     }})
-  .then(this._handleError);
+  .then(this._getJson);
 }
 
 deleteLikeFromCard(cardId) {
@@ -83,7 +83,7 @@ deleteLikeFromCard(cardId) {
     if (res.ok) {
       return res.json();
     }})
-  .then(this._handleError);
+  .then(this._getJson);
 }
 
 //метод обновления аватара пользователя
@@ -103,6 +103,6 @@ deleteCard(cardId) {
   return fetch(`${this._baseUrl}${"cards/"}${cardId}`, {
     method: "DELETE",
     headers: this._getHeaders(),
-  }).then(this._handleError);
+  }).then(this._getJson);
 }
 }
